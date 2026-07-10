@@ -1,5 +1,15 @@
-"scripts": {
-  "dev": "vite",        // or next dev, etc.
-  "build": "vite build", // or next build
-  "preview": "vite preview"
+{
+  "name": "dolce-pasta",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.16.0",
+    "tailwindcss": "^3.4.0"
+  }
 }
