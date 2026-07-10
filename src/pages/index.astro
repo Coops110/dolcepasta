@@ -1,0 +1,368 @@
+---
+import heroDolce from '../assets/images/hero_dolce.jpg';
+import insideDolce from '../assets/images/inside_dolce.jpg';
+import barWide from '../assets/images/bar_wide.jpg';
+import gargantua from '../assets/images/gargantua.jpg';
+import wineFridge from '../assets/images/wine_fridge.jpg';
+import redTable from '../assets/images/red_table.jpg';
+import salmonPizza from '../assets/images/salmon_pizza.jpg';
+import carbonara from '../assets/images/carbonara.jpg';
+import steakPasta from '../assets/images/steak_pasta.jpg';
+import gnocchi from '../assets/images/gnocchi.jpg';
+import pestoPasta from '../assets/images/pesto_pasta.jpg';
+import mushroomPasta from '../assets/images/mushroom_pasta.jpg';
+
+const nav = [
+  { href: '#home', label: 'Home' },
+  { href: '#menu', label: 'Menu' },
+  { href: '#gallery', label: 'Gallery' },
+  { href: '#reservations', label: 'Reservations' },
+  { href: '#contact', label: 'Contact' },
+];
+
+const mains = [
+  { img: salmonPizza, name: 'Salmon & Arugula Pizza', desc: 'Smoked salmon, arugula, red onion, capers.', tag: 'Signature' },
+  { img: carbonara, name: 'Spaghetti Carbonara', desc: 'Bacon, egg yolk, parmesan, garlic bread.' },
+  { img: steakPasta, name: 'Steak & Ravioli', desc: 'Grilled steak, ravioli, pan sauce.' },
+  { img: gnocchi, name: 'Gnocchi Arrabbiata', desc: 'Spiced tomato sauce, parmesan, chili, garlic bread.' },
+  { img: pestoPasta, name: 'Fusilli al Pesto', desc: 'Basil pesto, cherry tomato, parmesan.' },
+  { img: mushroomPasta, name: 'Linguine, Mushroom & Olive', desc: 'Mushroom, cherry tomato, black olive, basil.' },
+];
+
+const thaiFood = [
+  { name: 'Panang Chicken', desc: 'Curry, coconut milk, kaffir lime, Thai basil', price: '฿180' },
+  { name: 'Green Curry Chicken', desc: 'Coconut milk, eggplant, fresh herbs', price: '฿180' },
+  { name: 'Mixed Vegetables & Chicken', desc: '', price: '฿180' },
+  { name: 'Rice', desc: '', price: '฿40' },
+];
+
+const desserts = [
+  { name: 'Panna Cotta', desc: 'Vanilla cream, strawberry coulis', price: '฿160' },
+  { name: 'Tiramisu', desc: 'Coffee mascarpone', price: '฿180' },
+  { name: 'Chocolate Lava Cake', desc: '', price: '฿250' },
+  { name: 'Affogato', desc: '', price: '฿150' },
+  { name: 'Ice Cream', desc: '2 scoops', price: '฿140' },
+];
+
+const gallery = [
+  { img: barWide, label: 'Main Dining & Bar' },
+  { img: gargantua, label: 'The Dining Room' },
+  { img: wineFridge, label: 'Wine Selection' },
+  { img: redTable, label: 'Private Dining' },
+];
+---
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dolce Pasta Pattaya | Restaurant Lounge — French & Italian Food</title>
+  <meta name="description" content="Dolce Pasta — French & Italian restaurant lounge in Pattaya. Fresh, homemade pasta and pizza, full wine list. Open 12:30–22:30, Tuesday to Sunday." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dolcepastapattaya.com/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="restaurant.restaurant" />
+  <meta property="og:title" content="Dolce Pasta Pattaya | Restaurant Lounge" />
+  <meta property="og:description" content="Fresh, homemade French & Italian food and pizza, full wine list. Open 12:30–22:30, Tuesday to Sunday." />
+  <meta property="og:url" content="https://dolcepastapattaya.com/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Italiana&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-background text-on-surface selection:bg-secondary/30 selection:text-secondary">
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-background/90 md:bg-background/80 backdrop-blur-md border-b border-secondary/20">
+  <div class="flex justify-between items-center px-margin-mobile md:px-stack-lg py-3 md:py-stack-sm max-w-container-max mx-auto">
+    <div class="font-logo text-2xl md:text-3xl text-secondary tracking-wide">Dolce Pasta</div>
+
+    <div class="hidden md:flex items-center gap-stack-md font-body-md text-body-md tracking-wider">
+      {nav.map((item) => (
+        <a class="text-on-surface hover:text-secondary transition-colors" href={item.href}>{item.label}</a>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a class="hidden sm:inline-block bg-secondary text-on-secondary px-5 md:px-6 py-2 rounded-lg font-label-sm uppercase tracking-widest hover:bg-secondary-fixed transition-colors duration-300" href="https://food.grab.com" target="_blank" rel="noopener">
+        Order on GrabFood
+      </a>
+      <button id="menu-toggle" class="md:hidden text-secondary p-2 -mr-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="material-symbols-outlined text-3xl">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="hidden md:hidden bg-background border-t border-secondary/20 px-margin-mobile py-stack-md flex flex-col gap-stack-sm">
+    {nav.map((item) => (
+      <a class="text-on-surface hover:text-secondary transition-colors font-body-lg py-2 border-b border-secondary/10" href={item.href} data-close-menu>{item.label}</a>
+    ))}
+    <a class="sm:hidden mt-stack-sm bg-secondary text-on-secondary text-center px-6 py-3 rounded-lg font-label-sm uppercase tracking-widest" href="https://food.grab.com" target="_blank" rel="noopener">
+      Order on GrabFood
+    </a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="relative min-h-[100svh] flex items-center overflow-hidden pt-20 md:pt-0" id="home">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background via-background/60 md:via-background/50 to-background/40 md:to-transparent z-10"></div>
+    <img class="w-full h-full object-cover" src={heroDolce.src ?? heroDolce} alt="Dolce Pasta dining room, Pattaya" fetchpriority="high" />
+  </div>
+  <div class="relative z-20 max-w-container-max mx-auto px-margin-mobile md:px-stack-lg w-full">
+    <div class="max-w-2xl space-y-stack-sm md:space-y-stack-md">
+      <span class="font-label-sm text-secondary tracking-[0.3em] uppercase block text-[11px] md:text-xs">Restaurant Lounge · Pattaya</span>
+      <h1 class="font-display-lg text-display-lg md:text-display-lg-desktop text-on-surface leading-tight">
+        Taste Pattaya's Best <span class="text-secondary italic">Pasta</span>
+      </h1>
+      <p class="font-body-lg text-base md:text-body-lg text-on-surface-variant max-w-lg">
+        Fresh, homemade French & Italian food — and pizza — a short walk from Thepprasit Market.
+      </p>
+      <div class="flex flex-col sm:flex-row flex-wrap gap-stack-sm md:gap-stack-md pt-stack-sm">
+        <a class="text-center bg-secondary text-on-secondary px-8 md:px-10 py-4 font-label-sm uppercase tracking-[0.2em] hover:bg-secondary-fixed transition-all duration-300 md:transform md:hover:-translate-y-1" href="#reservations">Book a Table</a>
+        <a class="text-center border border-secondary/50 text-secondary px-8 md:px-10 py-4 font-label-sm uppercase tracking-[0.2em] hover:bg-secondary/10 transition-all duration-300" href="#menu">View Menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="py-section-padding-mobile md:py-section-padding bg-surface-container-lowest">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-stack-lg">
+    <div class="grid md:grid-cols-2 gap-stack-lg md:gap-gutter items-center">
+      <div class="relative group h-72 md:h-[500px] order-1">
+        <div class="hidden md:block absolute inset-0 border-2 border-secondary/20 translate-x-4 translate-y-4 transition-transform group-hover:translate-x-6 group-hover:translate-y-6"></div>
+        <img class="relative w-full h-full object-cover" src={insideDolce.src ?? insideDolce} alt="Dolce Pasta bar detail" loading="lazy" />
+      </div>
+      <div class="md:pl-stack-lg space-y-stack-sm md:space-y-stack-md order-2">
+        <h2 class="font-headline-lg text-headline-lg md:text-headline-lg-desktop text-on-surface">French & Italian <br/><span class="text-secondary italic">Excellence</span></h2>
+        <div class="w-16 md:w-20 h-1 bg-secondary"></div>
+        <p class="font-body-lg text-base md:text-body-lg text-on-surface-variant">
+          Dolce Pasta is a restaurant lounge in Pattaya serving fresh, homemade French and Italian food — pasta, pizza, and a full wine list — in a warm, wood-and-navy dining room built for lingering.
+        </p>
+        <p class="font-body-md text-sm md:text-body-md text-on-surface-variant/80">
+          Every pasta dish is made fresh to order. The wine wall is stocked and visible from the dining floor, and the kitchen also runs a full Thai menu alongside the Italian one.
+        </p>
+        <div class="pt-stack-sm">
+          <div class="flex items-center gap-stack-sm text-secondary">
+            <span class="material-symbols-outlined">wine_bar</span>
+            <span class="font-label-sm uppercase tracking-widest text-xs">Curated Wine Selection</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section class="py-section-padding-mobile md:py-section-padding relative overflow-hidden bg-background" id="menu">
+  <div class="absolute -top-24 -left-24 w-72 h-72 md:w-96 md:h-96 bg-secondary/5 rounded-full blur-[100px]"></div>
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-stack-lg relative z-10">
+    <div class="text-center mb-stack-lg">
+      <span class="font-label-sm text-secondary tracking-[0.4em] uppercase text-[11px]">From The Kitchen</span>
+      <h2 class="font-headline-lg text-headline-lg md:text-headline-lg-desktop mt-stack-sm">The Culinary <span class="italic font-light">Collection</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-stack-md">
+      {mains.map((dish) => (
+        <div class="group">
+          <div class="relative h-56 md:h-80 mb-stack-sm md:mb-stack-md overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-110" src={dish.img.src ?? dish.img} alt={dish.name} loading="lazy" />
+            {dish.tag && (
+              <div class="absolute top-3 right-3 md:top-4 md:right-4 bg-background/80 backdrop-blur-md px-2.5 py-1 md:px-3 border border-secondary/30">
+                <span class="font-label-sm text-secondary text-[10px] md:text-xs">{dish.tag.toUpperCase()}</span>
+              </div>
+            )}
+          </div>
+          <div class="flex justify-between items-baseline border-b border-secondary/10 pb-2 gap-2">
+            <h3 class="font-headline-md text-lg md:text-headline-md text-on-surface group-hover:text-secondary transition-colors">{dish.name}</h3>
+            <span class="font-body-lg text-secondary italic text-sm whitespace-nowrap">Market Price</span>
+          </div>
+          <p class="font-body-md text-sm md:text-body-md text-on-surface-variant mt-2 italic">{dish.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-stack-lg grid md:grid-cols-2 gap-stack-lg">
+      <div>
+        <h3 class="font-headline-md text-xl md:text-headline-md text-secondary mb-stack-sm">Thai Food</h3>
+        <div class="space-y-3 font-body-md text-sm md:text-body-md text-on-surface-variant">
+          {thaiFood.map((item) => (
+            <div class="flex justify-between border-b border-secondary/10 pb-2 gap-4">
+              <span>{item.name}{item.desc && <span class="opacity-60 italic"> — {item.desc}</span>}</span>
+              <span class="text-secondary shrink-0">{item.price}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="font-headline-md text-xl md:text-headline-md text-secondary mb-stack-sm">Homemade Dessert</h3>
+        <div class="space-y-3 font-body-md text-sm md:text-body-md text-on-surface-variant">
+          {desserts.map((item) => (
+            <div class="flex justify-between border-b border-secondary/10 pb-2 gap-4">
+              <span>{item.name}{item.desc && <span class="opacity-60 italic"> — {item.desc}</span>}</span>
+              <span class="text-secondary shrink-0">{item.price}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-stack-lg text-center">
+      <a class="font-label-sm text-secondary uppercase tracking-[0.2em] border-b border-secondary pb-1 hover:text-secondary-fixed transition-colors" href="https://food.grab.com" target="_blank" rel="noopener">Order Delivery on GrabFood</a>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="py-section-padding-mobile md:py-section-padding bg-surface-container-low" id="gallery">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-stack-lg">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-stack-lg gap-stack-sm">
+      <div>
+        <span class="font-label-sm text-secondary tracking-[0.4em] uppercase text-[11px]">Atmosphere</span>
+        <h2 class="font-headline-lg text-headline-lg md:text-headline-lg-desktop mt-stack-sm">Inside Dolce <span class="italic font-light">Pasta</span></h2>
+      </div>
+      <p class="font-body-md text-sm md:text-body-md text-on-surface-variant max-w-sm mb-1">Warm wood tones, a full wine wall, and a dining room built for lingering — off Thep Prasit 6.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+      {gallery.map((item) => (
+        <div class="overflow-hidden relative group h-64 md:h-96">
+          <img class="w-full h-full object-cover transition-transform duration-1000 md:group-hover:scale-105" src={item.img.src ?? item.img} alt={item.label} loading="lazy" />
+          <div class="absolute inset-0 bg-background/20 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-end md:items-center justify-center backdrop-blur-[1px] md:backdrop-blur-[2px]">
+            <span class="font-label-sm uppercase tracking-[0.3em] text-on-surface bg-background/60 px-4 py-2 md:px-6 md:py-3 border border-secondary/30 m-3 md:m-0 text-[10px] md:text-xs">{item.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Reservations -->
+<section class="py-section-padding-mobile md:py-section-padding bg-background relative overflow-hidden" id="reservations">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-stack-lg">
+    <div class="max-w-4xl mx-auto p-stack-md sm:p-stack-lg md:p-16 border border-secondary/20 bg-surface-container/60 backdrop-blur-md shadow-2xl">
+      <div class="text-center mb-stack-lg">
+        <span class="font-label-sm text-secondary tracking-[0.4em] uppercase text-[11px]">Join Us</span>
+        <h2 class="font-headline-lg text-headline-lg md:text-headline-lg-desktop mt-stack-sm">Make a Reservation</h2>
+        <p class="font-body-md text-sm md:text-body-md text-on-surface-variant mt-stack-sm">Open 12:30 – 22:30, Tuesday to Sunday. Closed Mondays.</p>
+      </div>
+      <form class="space-y-stack-md">
+        <div class="grid sm:grid-cols-2 gap-stack-md">
+          <div class="space-y-1">
+            <label class="font-label-sm text-on-surface-variant uppercase tracking-widest text-[10px]">Full Name</label>
+            <input class="w-full bg-transparent border-0 border-b border-secondary/30 text-on-surface focus:ring-0 focus:border-secondary transition-all font-body-md py-3 placeholder:text-surface-variant text-base" placeholder="Your name" type="text" />
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-sm text-on-surface-variant uppercase tracking-widest text-[10px]">Phone or Email</label>
+            <input class="w-full bg-transparent border-0 border-b border-secondary/30 text-on-surface focus:ring-0 focus:border-secondary transition-all font-body-md py-3 placeholder:text-surface-variant text-base" placeholder="For confirmation" type="text" />
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-sm text-on-surface-variant uppercase tracking-widest text-[10px]">Date</label>
+            <input class="w-full bg-transparent border-0 border-b border-secondary/30 text-on-surface focus:ring-0 focus:border-secondary transition-all font-body-md py-3 text-base" type="date" />
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-sm text-on-surface-variant uppercase tracking-widest text-[10px]">Time</label>
+            <select class="w-full bg-transparent border-0 border-b border-secondary/30 text-on-surface focus:ring-0 focus:border-secondary transition-all font-body-md py-3 appearance-none text-base">
+              <option class="bg-background">12:30</option>
+              <option class="bg-background">18:00</option>
+              <option class="bg-background">19:00</option>
+              <option class="bg-background">20:00</option>
+              <option class="bg-background">21:00</option>
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-sm text-on-surface-variant uppercase tracking-widest text-[10px]">Guests</label>
+            <select class="w-full bg-transparent border-0 border-b border-secondary/30 text-on-surface focus:ring-0 focus:border-secondary transition-all font-body-md py-3 appearance-none text-base">
+              <option class="bg-background">2 People</option>
+              <option class="bg-background">4 People</option>
+              <option class="bg-background">6+ People</option>
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-sm text-on-surface-variant uppercase tracking-widest text-[10px]">Occasion (Optional)</label>
+            <input class="w-full bg-transparent border-0 border-b border-secondary/30 text-on-surface focus:ring-0 focus:border-secondary transition-all font-body-md py-3 placeholder:text-surface-variant text-base" placeholder="Birthday, anniversary..." type="text" />
+          </div>
+        </div>
+        <div class="pt-stack-md text-center">
+          <button class="w-full sm:w-auto bg-secondary text-on-secondary px-10 sm:px-16 py-4 font-label-sm uppercase tracking-[0.3em] hover:bg-secondary-fixed transition-all duration-500 shadow-lg hover:shadow-secondary/20" type="submit">Confirm Reservation</button>
+          <p class="font-label-sm text-on-surface-variant mt-stack-md italic opacity-60 text-xs">For parties larger than 10, please contact us directly.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest py-stack-lg border-t border-secondary/10" id="contact">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-stack-lg">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-stack-lg md:gap-gutter mb-stack-lg">
+      <div>
+        <div class="font-logo text-3xl text-secondary tracking-wide mb-4">Dolce Pasta</div>
+        <p class="font-body-md text-sm text-on-surface-variant/80">Restaurant Lounge — French & Italian food. Pattaya.</p>
+      </div>
+      <div>
+        <h4 class="font-label-sm text-secondary uppercase tracking-[0.2em] mb-stack-sm text-xs">Location</h4>
+        <p class="font-body-md text-sm text-on-surface-variant">
+          6/47 Moo 12<br/>
+          Soi Thep Prasit 6<br/>
+          Pattaya — 600m from Thepprasit Market
+        </p>
+      </div>
+      <div>
+        <h4 class="font-label-sm text-secondary uppercase tracking-[0.2em] mb-stack-sm text-xs">Hours</h4>
+        <p class="font-body-md text-sm text-on-surface-variant">
+          12:30 – 22:30<br/>
+          Tuesday to Sunday
+        </p>
+      </div>
+      <div>
+        <h4 class="font-label-sm text-secondary uppercase tracking-[0.2em] mb-stack-sm text-xs">Follow Us</h4>
+        <p class="font-body-md text-sm text-on-surface-variant mb-2">@dolcepastapattaya · @dolce_pasta</p>
+        <div class="flex gap-stack-sm mt-stack-sm">
+          <a class="text-on-surface hover:text-secondary transition-colors" href="#" title="Instagram/Facebook: @dolcepastapattaya"><span class="material-symbols-outlined">camera_enhance</span></a>
+          <a class="text-on-surface hover:text-secondary transition-colors" href="#" title="LINE: @dolce_pasta"><span class="material-symbols-outlined">chat</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-stack-md pt-stack-md border-t border-secondary/5 font-body-md text-sm">
+      <p class="text-on-surface-variant/60">© 2026 Dolce Pasta Pattaya.</p>
+      <div class="flex gap-stack-md text-on-surface-variant">
+        <a class="hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+        <a class="hover:text-secondary transition-colors" href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0e1320; }
+  ::-webkit-scrollbar-thumb { background: #e9c349; border-radius: 3px; }
+</style>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.querySelector('.material-symbols-outlined').textContent = isOpen ? 'close' : 'menu';
+  });
+  menu?.querySelectorAll('[data-close-menu]').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+    });
+  });
+</script>
+</body>
+</html>
